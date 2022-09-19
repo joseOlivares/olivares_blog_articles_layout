@@ -1,6 +1,6 @@
 # olivares-blog-particle
 
-Gantry 5.3.2+ Particle to show articles (Blog entrie presentation) using cards on Joomla 4.x or higher  (joomla 3.5+ compatiblle).  This particle uses UIkit 3.x and FontAwesome 5.x
+Gantry 5.3.2+ Particle to show articles inside categories implementing a Blog entrie list (small image on the left and intro text on the right, usind a card style). This is fir Joomla 4.x or higher  (joomla 3.5+ compatiblle).  This particle uses UIkit 3.x and FontAwesome 5.x
 
 # Developer info :ninja:
 Hi my name is Jose Luis Olivares. 
@@ -10,14 +10,14 @@ You can see an example implemented in this website I made (https://iconnsv.com) 
 
 # Installation on Joomla 3.x / 4.x:
 
-1-Copy the blog-main-olivares.html.twig and blog-main-olivares.yaml files to root/templates/TEMPLATE_DIR/custom/particles (if the particles folder does not exist, you have to create it manually)
+1-Copy the olivares_blog_article_layout.html.twig and blog-main-olivares.yaml files to root/templates/TEMPLATE_DIR/custom/particles (if the particles folder does not exist, you have to create it manually)
 
-2-Copy the _blog-main-olivares.scss file to root/templates/TEMPLATE_DIR/custom/scss (if the scss folder does not exists, you will need to create it manually)
+2-Copy the _olivares_blog_article_layout.scss file to root/templates/TEMPLATE_DIR/custom/scss (if the scss folder does not exists, you will need to create it manually)
 
 3- Add the following code in your custom.scss file.
 
 	@import "dependencies";
-	@import "blog-main-olivares"; /* Olivares Blog Card Particle */
+	@import "olivares_blog_article_layout"; /* Olivares Blog Card Particle */
 
   If the custom.scss file does not exists, you will need to create it manually. Also, make sure your custom.scss file has the @import "dependencies"; code at the very top.
 

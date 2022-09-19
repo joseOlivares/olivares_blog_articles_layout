@@ -1,8 +1,8 @@
-name: BlogMainEntries-Olivares
-description: Particle to show 2 articles (Blog entries), by Jose Luis Olivares. You can say thanks endorsing my skills on https://www.linkedin.com/in/jolivaress/.
+name: Olivares-blog-articles-layout
+description: Particle to show a list of articles inside a category (or categories), by Jose Luis Olivares. You can say thanks endorsing my dev skills on https://www.linkedin.com/in/jolivaress/.
             - and/or making a voluntary donation through Paypal https://paypal.me/joolivares     
 type: particle
-icon: far fa-blog
+icon: far fa-th-list
 
 configuration:
   caching:
@@ -53,7 +53,7 @@ form:
     article.filter.articles:
       type: input.text
       label: Articles
-      description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+      description: Leave blank to show all articles or enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,7,14).
       overridable: false
 
     article.default_cardbody:

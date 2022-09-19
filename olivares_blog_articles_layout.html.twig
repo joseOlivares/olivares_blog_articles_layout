@@ -1,5 +1,5 @@
-{# Blog presentation cards for articles   by José Luis Olivares. 
-You can say thanks endorsing my skills on https://www.linkedin.com/in/jolivaress/.
+{# List of articles under a category (or categories)   by José Luis Olivares. 
+You can say thanks endorsing my developer skills on https://www.linkedin.com/in/jolivaress/
 and/or  making a voluntary donation through Paypal https://paypal.me/joolivares #}
 
 {% extends '@nucleus/partials/particle.html.twig' %}
@@ -22,6 +22,8 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
     {% set articles = article_finder.find() %}
 
 {% block particle %}
+
+{#
 <div class="uk-container uk-text-center">
     {% if particle.title %}
         <div class="g-grid">
@@ -67,6 +69,44 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
         <!-- <p>{{ article.introtext|raw }}</p> -->
         <img src="{{ url(article.images.image_intro) }}" {{ article.images.image_intro|imagesize|raw }} class="uk-border-rounded" alt="{{ article.images.image_intro_alt }}" uk-cover/>
      {% endfor %}
-    #}
+    #} {#
 </div>
+#}
+
+<div class="uk-container">
+    {% if particle.title %}
+        <div class="g-grid">
+            <div class="g-block size-100 {{ particle.title_css }}">
+                <{{ particle.titlehx|raw }} class="g-title">{{ particle.title|raw }}</{{ particle.titlehx|raw }}>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="uk-grid-match uk-text-center uk-grid-large" uk-grid>
+        {% for article in articles  %}
+            <div class="uk-width-1-2">
+                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container">
+                        <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-link-reset"> 
+                            <img src="https://source.unsplash.com/PAykYb-8Er8/w=600" alt="" uk-cover>
+                            <canvas width="600" height="320"></canvas>
+                        </a>
+                    </div>
+                    <div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">
+                                <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-button uk-button-text">{{article.title|e}} hfghgfhf</a>
+                            </h3>
+                            <p>Texto readmore 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor  %}
+    </div>
+</div>
+
+
+
 {% endblock %}
