@@ -3,7 +3,7 @@ You can say thanks endorsing my developer skills on https://www.linkedin.com/in/
 and/or  making a voluntary donation through Paypal https://paypal.me/joolivares #}
 
 {% extends '@nucleus/partials/particle.html.twig' %}
-    {% set article_settings = particle.article %}
+    {% set article_settings = particle.article %} {# yaml configuration #}
     {% set filter = article_settings.filter %}
     {% set default_cardbody=article_settings.default_cardbody %}
 
@@ -20,6 +20,13 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
 
     {% set total = article_finder.count() %}
     {% set articles = article_finder.find() %}
+
+    {#Max characters for article intro text#}
+    {% if article_settings.intro_chars %}
+        {% set max_chars = article_settings.intro_chars %}
+    {% else %}
+        {% set max_chars = 250 %}
+    {% endif %}
 
 {% block particle %}
 
@@ -81,23 +88,37 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
             </div>
         </div>
     {% endif %}
-
-    <div class="uk-grid-match uk-text-center uk-grid-large" uk-grid>
+    <script>console.log({{ _context | json_encode | raw }});
+        console.log("---------articles[1]------");
+        console.log({{ articles[1] | json_encode | raw }});
+        console.log("---------Categories------");
+        console.log({{ categories[22]| json_encode | raw }});
+    </script>
+ 
+    <div class="uk-grid-match uk-text-center uk-grid-medium" uk-grid>
         {% for article in articles  %}
-            <div class="uk-width-1-2">
-                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-width-1-{{particle.grid_elements}}@m">
+                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin uk-box-shadow-large" uk-grid>
                     <div class="uk-card-media-left uk-cover-container">
                         <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-link-reset"> 
-                            <img src="https://source.unsplash.com/PAykYb-8Er8/w=600" alt="" uk-cover>
-                            <canvas width="600" height="320"></canvas>
+                            {% if article_settings.imagefrom =='image_fulltext'%}
+                                <img src="{{ url(article.images.image_fulltext) }}" alt="{{ article.images.image_fulltext_alt}}" uk-cover>
+                            {% else %}
+                                <img src="{{ url(article.images.image_intro) }}" alt="{{ article.images.image_intro_alt }}" uk-cover>
+                            {% endif %}
+                            <canvas width="600" height="400"></canvas>
                         </a>
                     </div>
                     <div>
-                        <div class="uk-card-body">
-                            <h3 class="uk-card-title">
-                                <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-button uk-button-text">{{article.title|e}} hfghgfhf</a>
+                        <div class="uk-card-body uk-padding-small uk-padding-remove-top olivares-limit-cardtextX">
+                            <h3 class="uk-card-title uk-margin-remove-bottom ">
+                                <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-button uk-button-text">{{article.title|e}}</a>
                             </h3>
-                            <p>Texto readmore 
+                            {% if article.attribs.alternative_readmore !="" %}
+                                <p class="uk-text-small uk-margin-remove-top">{{article.attribs.alternative_readmore|truncate_text(max_chars)|raw }}
+                            {% else %}
+                                <p class="uk-text-small uk-margin-remove-top">{{article.introtext|truncate_text(max_chars)|raw }}
+                            {% endif %}
                             </p>
                         </div>
                     </div>

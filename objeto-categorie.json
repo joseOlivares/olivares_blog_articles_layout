@@ -1,0 +1,36 @@
+{
+    "id": 22,
+    "asset_id": 133,
+    "parent_id": 19,
+    "lft": 18,
+    "rgt": 19,
+    "level": 2,
+    "path": "estudios-biblicos/doctrina",
+    "extension": "com_content",
+    "title": "Doctrina",
+    "alias": "doctrina",
+    "note": "",
+    "description": "",
+    "published": 1,
+    "checked_out": null,
+    "checked_out_time": null,
+    "access": 1,
+    "params": {
+      "category_layout": "",
+      "image": "",
+      "image_alt": ""
+    },
+    "metadesc": "Estudios sobre doctrina bíblica",
+    "metakey": "Doctrina",
+    "metadata": {
+      "author": "desdelabiblia.org",
+      "robots": ""
+    },
+    "created_user_id": 316,
+    "created_time": "2022-09-19 17:18:09",
+    "modified_user_id": 316,
+    "modified_time": "2022-09-19 17:18:09",
+    "hits": 0,
+    "language": "*",
+    "version": 1
+  }

@@ -48,7 +48,22 @@ form:
       type: joomla.categories
       label: Categories
       description: Select the categories the articles should be taken from.
-      overridable: false      
+      overridable: false     
+
+    article.imagefrom:
+      type:  select.select
+      label: Image to display
+      description: Select which article images to display
+      default: image_intro
+      options:
+          image_intro: Articles intro image
+          image_fulltext: Articles full image
+
+    article.intro_chars:
+      type: input.text
+      label: Max charcaters for articles intro text
+      description: Set max characters for Intro Text
+      default: 250
 
     article.filter.articles:
       type: input.text
@@ -56,22 +71,16 @@ form:
       description: Leave blank to show all articles or enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,7,14).
       overridable: false
 
-    article.default_cardbody:
-      type: input.text
-      label: Articles default text content
-      description: Default text to show as articles content. (optional)
-      default: Read More...
-
-    cardcount:      
+    grid_elements:      
       type:  select.select
-      label: Card Items to show 
-      description: Select the number of card items to show per row
+      label: Articles by row (on Large screens)
+      description: Select the number of articles to show per row
       placeholder: 'Select...'
       default: 2
       options:
-          2: 2 cards
-          3: 3 cards
-          4: 4 cards
+          1: 1 article
+          2: 2 articles
+          3: 3 articles
 
     cardbodypadding:
       type: select.select
