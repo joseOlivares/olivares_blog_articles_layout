@@ -88,17 +88,18 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
             </div>
         </div>
     {% endif %}
+    {#
     <script>console.log({{ _context | json_encode | raw }});
         console.log("---------articles[1]------");
         console.log({{ articles[1] | json_encode | raw }});
         console.log("---------Categories------");
         console.log({{ categories[22]| json_encode | raw }});
     </script>
- 
+     #}
     <div class="uk-grid-match uk-text-center uk-grid-medium" uk-grid>
         {% for article in articles  %}
             <div class="uk-width-1-{{particle.grid_elements}}@m">
-                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin uk-box-shadow-large" uk-grid>
+                <div class="uk-card uk-card-{{particle.cardtype|default('default')}} uk-grid-collapse uk-child-width-1-2@m uk-margin uk-box-shadow-large" uk-grid>
                     <div class="uk-card-media-left uk-cover-container">
                         <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-link-reset"> 
                             {% if article_settings.imagefrom =='image_fulltext'%}
@@ -112,14 +113,18 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
                     <div>
                         <div class="uk-card-body uk-padding-small uk-padding-remove-top olivares-limit-cardtextX">
                             <h3 class="uk-card-title uk-margin-remove-bottom ">
-                                <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route }}" class="uk-button uk-button-text">{{article.title|e}}</a>
+                                <a target="{{ particle.blogtarget|default('_parent') }}" href="{{ article.route | url }}" class="uk-button uk-button-text">{{article.title|e}}</a>
                             </h3>
-                            {% if article.attribs.alternative_readmore !="" %}
-                                <p class="uk-text-small uk-margin-remove-top">{{article.attribs.alternative_readmore|truncate_text(max_chars)|raw }}
-                            {% else %}
-                                <p class="uk-text-small uk-margin-remove-top">{{article.introtext|truncate_text(max_chars)|raw }}
-                            {% endif %}
-                            </p>
+                            <a class="uk-link-reset" href="{{ article.route | url }}">
+                                {% if article.attribs.alternative_readmore !="" %}
+                                    <p class="uk-text-small uk-margin-remove-top">{{article.attribs.alternative_readmore|truncate_text(max_chars)|raw }}</p>
+                                {% else %}
+                                    <p class="uk-text-small uk-margin-remove-top">{{article.introtext|truncate_text(max_chars)|raw }}</p>
+                                {% endif %}
+                            </a>
+                            <div class="uk-position-small uk-margin-small-bottom uk-position-bottom-right uk-text-meta uk-text-small">
+                                <a href="{{ article.route | url }}" uk-icon="icon: heart"> {{article.hits}}&nbsp;</a> 
+                            </div>
                         </div>
                     </div>
                 </div>

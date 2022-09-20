@@ -33,4 +33,4 @@ You can see an example implemented in this website I made (https://iconnsv.com) 
 ![card-mode]( ./no-copy-imgs/particle-img3.jpg?raw=true "How many cards")
 
 ## Real example
-![nocard-mode]( ./no-copy-imgs/particle-img4.jpg?raw=true "PArticle implemented")
+![nocard-mode]( ./no-copy-imgs/particle-img4.jpg?raw=true "Particle implemented")

@@ -82,20 +82,6 @@ form:
           2: 2 articles
           3: 3 articles
 
-    cardbodypadding:
-      type: select.select
-      label: Card body padding
-      description: Select padding.
-      placeholder: 'Select...'
-      default: uk-padding-remove-horizontal
-      options:
-          uk-padding: default
-          uk-padding-remove: no padding all
-          uk-padding-remove-horizontal: remove horizontal
-          uk-padding-remove-vertical: remove vertical  
-          uk-padding-small: Small
-          uk-padding-large: Large
-
     cardtype:
       type: select.select
       label: Card Style
@@ -107,40 +93,5 @@ form:
         primary: Primary
         secondary: Secondary             
 
-    blogbuttontext:
-      type: input.text
-      label: Blog Button Text
-      description: Customize the text to show inside button blog.
-      placeholder: Enter text
-      default: My Blog 
-
-    blogbuttontype:
-      type: select.select
-      label: Button Type
-      description: Select the blog button type.
-      placeholder: 'Select...'
-      default: default
-      options:
-          uk-button-default: default
-          uk-button-primary: primary
-          uk-button-secondary: secondary
-          uk-button-danger: danger  
-          uk-button-text: text
-          uk-button-link: link       
-
-    bloglink:
-      type: input.text 
-      label: Blog Link
-      default: '#'  
-
-    blogtarget:
-      type: select.select
-      label: Blog Link target
-      description: Target browser window when the blog button is clicked.
-      placeholder: 'Select...'
-      default: _parent
-      options:
-          _parent: Self
-          _blank: New Window 
 
  
