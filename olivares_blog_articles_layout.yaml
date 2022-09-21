@@ -47,7 +47,7 @@ form:
     article.filter.categories:
       type: joomla.categories
       label: Categories
-      description: Select the categories the articles should be taken from.
+      description: Select the categories where articles should be taken from.
       overridable: false     
 
     article.imagefrom:
@@ -73,7 +73,7 @@ form:
 
     grid_elements:      
       type:  select.select
-      label: Articles by row (on Large screens)
+      label: Articles per row (on Large screens)
       description: Select the number of articles to show per row
       placeholder: 'Select...'
       default: 2
@@ -81,6 +81,44 @@ form:
           1: 1 article
           2: 2 articles
           3: 3 articles
+
+    articles_by_page:      
+      type:  select.select
+      label: Paginator
+      description: Select the total of articles to be shown by page
+      placeholder: 'Select...'
+      default: 8
+      options:
+          1: 1 articles
+          2: 2 articles
+          4: 4 articles
+          5: 5 articles
+          6: 6 articles
+          7: 7 articles
+          8: 8 articles
+          10: 10 articles
+          12: 12 articles
+          15: 15 articles
+          20: 20 srticles
+
+    url_param:      
+      type:  input.text
+      label: Url param name
+      description: Name of the Url param for the paginator
+      default: items
+
+    paginator_path:      
+      type:  input.text
+      label: Paginator path
+      description: define the navigation path for the paginator
+      placeholder: '/path-for-current-page'
+      default: /estudios-biblicos
+
+    paginator_css:
+      type: input.selectize
+      label: Paginator CSS Classes
+      description: Customize the paginator CSS Classes.
+
 
     cardtype:
       type: select.select

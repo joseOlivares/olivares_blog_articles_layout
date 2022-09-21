@@ -17,13 +17,15 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
         {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
     {% endif %}
 
-    {% set total = article_finder.count() %}
-    {# {% set articles = article_finder.find() %} #}
-
+    {% set total_articles = article_finder.count() %}
+    {# articles to be shown by page #}
+    {% set paginator_range = particle.articles_by_page %}
 
     {# getting params from url#}
-    {% set paginator = gantry.olivares.get_url_param('items')|default(0)%}
-    {% set articles = article_finder.start(paginator).find() %}
+    {% set param_name = particle.url_param|default('items') %}
+    {% set paginator_start = gantry.olivares.get_url_param(param_name)|default(0)%}
+
+    {% set articles = article_finder.start(paginator_start).limit(paginator_range).find() %}
 
     {#Max characters for article intro text#}
     {% if article_settings.intro_chars %}
@@ -55,7 +57,7 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
     </script>#}
     
     <div class="uk-grid-match uk-text-center uk-grid-medium" uk-grid>
-        {% for article in articles  %}
+        {% for article in articles %}
             <div class="uk-width-1-{{particle.grid_elements}}@m">
                 <div class="uk-card uk-card-{{particle.cardtype|default('default')}} uk-grid-collapse uk-child-width-1-2@m uk-margin uk-box-shadow-large" uk-grid>
                     <div class="uk-card-media-left uk-cover-container">
@@ -87,8 +89,46 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
                     </div>
                 </div>
             </div>
+
         {% endfor  %}
     </div>
+</div>
+<div class="uk-margin">
+    <ul class="uk-pagination uk-flex-center {{particle.paginator_css}}" uk-margin>
+        {# previous #}
+        {% if paginator_start == 0 %}
+            <li class="uk-disabled">
+                <a href="{{particle.paginator_path}}"><span uk-pagination-previous></span> Previous</a>
+            </li>
+        {% else %} 
+            <li>
+                {% set previous = paginator_start - paginator_range   %}
+                <a href="{{particle.paginator_path}}?{{param_name}}={{previous}}"><span uk-pagination-previous></span> Previous</a>
+            </li>
+        {% endif %}  
+        {# numbers #}
+        {% set remain_items = total_articles %}
+        {% set start_limit = 0 %}
+        {% for i in 0..total_articles if remain_items > 0  %}
+            <li class="{{paginator_start == start_limit ? 'uk-active uk-text-bold' }}">
+                <a href="{{particle.paginator_path}}?{{param_name}}={{start_limit}}">{{loop.index}}</a>
+            </li>
+            {% set remain_items = remain_items - paginator_range  %}
+            {% set start_limit = start_limit + paginator_range %}
+        {% endfor %}
+
+        {# next  #}
+        {% set next = paginator_start + paginator_range %}
+        {% if next < total_articles  %}
+            <li>
+                <a href="{{particle.paginator_path}}?{{param_name}}={{next}}">Next <span uk-pagination-next></span></a>
+            </li>
+        {% else %} 
+            <li class="uk-disabled" >
+                <a href="#">Next <span uk-pagination-next></span></a>
+            </li>
+        {% endif %}
+    </ul>
 </div>
 
 
