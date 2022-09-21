@@ -5,7 +5,6 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
 {% extends '@nucleus/partials/particle.html.twig' %}
     {% set article_settings = particle.article %} {# yaml configuration #}
     {% set filter = article_settings.filter %}
-    {% set default_cardbody=article_settings.default_cardbody %}
 
     {# Category Finder #}
     {% set category_options = filter.categories ? {id: [filter.categories|split(','), 0]} : {} %}
@@ -19,7 +18,12 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
     {% endif %}
 
     {% set total = article_finder.count() %}
-    {% set articles = article_finder.find() %}
+    {# {% set articles = article_finder.find() %} #}
+
+
+    {# getting params from url#}
+    {% set paginator = gantry.olivares.get_url_param('items')|default(0)%}
+    {% set articles = article_finder.start(paginator).find() %}
 
     {#Max characters for article intro text#}
     {% if article_settings.intro_chars %}
@@ -27,6 +31,8 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
     {% else %}
         {% set max_chars = 250 %}
     {% endif %}
+
+
 
 {% block particle %}
 
@@ -38,14 +44,16 @@ and/or  making a voluntary donation through Paypal https://paypal.me/joolivares 
             </div>
         </div>
     {% endif %}
-    {#
-    <script>console.log({{ _context | json_encode | raw }});
+   
+   {# <script>  
+        console.log({{ _context | json_encode | raw }});
         console.log("---------articles[1]------");
         console.log({{ articles[1] | json_encode | raw }});
         console.log("---------Categories------");
-        console.log({{ categories[22]| json_encode | raw }});
-    </script>
-     #}
+        console.log({{ categories[22]| json_encode | raw }}); 
+        console.log("Paginador: "+ {{paginator}});
+    </script>#}
+    
     <div class="uk-grid-match uk-text-center uk-grid-medium" uk-grid>
         {% for article in articles  %}
             <div class="uk-width-1-{{particle.grid_elements}}@m">
