@@ -85,7 +85,7 @@ form:
     articles_by_page:      
       type:  select.select
       label: Paginator
-      description: Select the total of articles to be shown by page
+      description: Select the total of articles to be shown per page
       placeholder: 'Select...'
       default: 8
       options:
@@ -99,7 +99,7 @@ form:
           10: 10 articles
           12: 12 articles
           15: 15 articles
-          20: 20 srticles
+          20: 20 articles
 
     url_param:      
       type:  input.text
