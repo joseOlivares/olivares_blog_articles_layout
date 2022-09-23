@@ -21,6 +21,9 @@ You can see an example implemented in this website I made (https://iconnsv.com) 
 
   If the custom.scss file does not exists, you will need to create it manually. Also, make sure your custom.scss file has the @import "dependencies"; code at the very top.
 
+
+4- Add olivaresGetUrlParam.php as a Gantry dependency injection (check Gantry docs https://docs.gantry.org/gantry5/advanced/php-functions)
+ 
 # Some Screenshots
 
 ## Particle on Gantry 5.3.2+
