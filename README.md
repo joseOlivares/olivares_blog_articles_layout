@@ -1,6 +1,6 @@
-# olivares-blog-particle
+# olivares-blog-articles_layout
 
-Gantry 5.3.2+ Particle to show articles inside categories implementing a Blog entrie list (small image on the left and intro text on the right, usind a card style). This is fir Joomla 4.x or higher  (joomla 3.5+ compatiblle).  This particle uses UIkit 3.x and FontAwesome 5.x
+Gantry 5.3.2+ Particle to show articles inside joomla categories implementing a Blog entries list (small image on the left and intro text on the right, usind a card style). It works with Joomla 4.x or higher  (joomla 3.5+ compatiblle).  This particle uses UIkit 3.x and FontAwesome 5.x
 
 # Developer info :ninja:
 Hi my name is Jose Luis Olivares. 
