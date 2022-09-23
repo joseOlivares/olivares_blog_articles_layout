@@ -4,7 +4,7 @@ Gantry 5.3.2+ Particle to show articles inside categories implementing a Blog en
 
 # Developer info :ninja:
 Hi my name is Jose Luis Olivares. 
-If you appreciate my effort, please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/) or making a voluntary donation through Paypal https://paypal.me/joolivares 
+If you appreciate my effort, please endorse my Development skills on Linkedin (https://www.linkedin.com/in/jolivaress/) or making a voluntary donation through Paypal https://paypal.me/joolivares 
 
 You can see an example implemented in this website I made (https://iconnsv.com) or down below checking some screenshots
 
@@ -26,10 +26,10 @@ You can see an example implemented in this website I made (https://iconnsv.com) 
 ## Particle on Gantry 5.3.2+
 ![gantry5-particle]( ./no-copy-imgs/particle-img1.jpg?raw=true "Add particle")
 
-## Defining articles ID's to show
+## General Configuration
 ![presentation-mode](./no-copy-imgs/particle-img2.jpg?raw=true "Articles IDs to show")
 
-## How many cards to show (from 2 to 4)
+## Setting categories where articles should be taken from
 ![card-mode]( ./no-copy-imgs/particle-img3.jpg?raw=true "How many cards")
 
 ## Real example
